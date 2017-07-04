@@ -27,4 +27,22 @@ NOTICE:
   The presence of a J-LINK programmer on the SAMD21 device seems to interact with the bootlader ability to "Start" the application after the WDT_reset 
   Just beware !... remove the J-LINK if bootloading does not seems to start the application after flashing
   
-  
+ 
+ My latest toughts on this bottloader:
+ It would be WAY better if it implemented a USB MSC ( mass storage class ) as well.
+ I use this bootloader on the FEATHER_M0_WINC1500   +   SD_CARD_featherWing.
+ 
+ After programming the CPU with the bootloader, I need to make sure the SD card contains the fd.bin or MDL.bin files.
+ When I want to update the software, the CPU downloads a new firmware from the WEB ( via the WINC1500 wifi module ).
+ Once in a while, I make changes to the software that screws up the file download process and the latest .BIN running is no longer able to download an updated BIN.  ( that sucks )
+ 
+ So I have to open the casing, remove the SD card, write my new BINary, put it back i, close casing and reboot.
+ ( Now you understand WHY I added the ability of selecting 2 different binaries --> fd.bin stands for factory default !!! )
+ 
+ Having a USB MSC would expose the SD Card on the USB-cable as it if was a memory stick.  No longer would I need to open the casing .
+ 
+ I am currently investigating the UF2 bootloader.  I managed to get it working BUT I screwed up when I updated my Device drivers ( last Arduino IDE Board manager update ) and the USB-MSC no longer shows up.
+ 
+ Stay tuned .... or ask questions
+ 
+ 
