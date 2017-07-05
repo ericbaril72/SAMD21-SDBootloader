@@ -41,7 +41,12 @@ NOTICE:
  
  Having a USB MSC would expose the SD Card on the USB-cable as it if was a memory stick.  No longer would I need to open the casing .
  
- I am currently investigating the UF2 bootloader.  I managed to get it working BUT I screwed up when I updated my Device drivers ( last Arduino IDE Board manager update ) and the USB-MSC no longer shows up.
+ I am currently investigating the UF2 bootloader.  it Exposes USB as  Mass-Storage,  PC does the programming via standard drag-and-drop
+ found here: https://github.com/Microsoft/uf2-samd21
+ if you just want to try it out before getting into building it using makefile on a Unix machine ... ;-)
+ pre-compiled UF2 bootloader.bin + blink.uf2 example :
+ https://github.com/ericbaril72/SAMD21-SDBootloader/issues/1#issuecomment-312895350
+ 
  
  Stay tuned .... or ask questions
  
