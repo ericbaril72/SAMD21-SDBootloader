@@ -93,33 +93,11 @@ typedef enum
 // FYI: Each Logical Unit Number (LUN) corresponds to a memory.
 
 // Check LUN defines.
-#ifndef LUN_0
-  #error LUN_0 must be defined as ENABLE or DISABLE in conf_access.h
-#endif
-#ifndef LUN_1
-  #error LUN_1 must be defined as ENABLE or DISABLE in conf_access.h
-#endif
+
 #ifndef LUN_2
   #error LUN_2 must be defined as ENABLE or DISABLE in conf_access.h
 #endif
-#ifndef LUN_3
-  #error LUN_3 must be defined as ENABLE or DISABLE in conf_access.h
-#endif
-#ifndef LUN_4
-  #error LUN_4 must be defined as ENABLE or DISABLE in conf_access.h
-#endif
-#ifndef LUN_5
-  #error LUN_5 must be defined as ENABLE or DISABLE in conf_access.h
-#endif
-#ifndef LUN_6
-  #error LUN_6 must be defined as ENABLE or DISABLE in conf_access.h
-#endif
-#ifndef LUN_7
-  #error LUN_7 must be defined as ENABLE or DISABLE in conf_access.h
-#endif
-#ifndef LUN_USB
-  #error LUN_USB must be defined as ENABLE or DISABLE in conf_access.h
-#endif
+
 
 /*! \name LUN IDs
  */
@@ -128,14 +106,11 @@ typedef enum
 #define LUN_ID_1        (LUN_ID_0 + LUN_0)
 #define LUN_ID_2        (LUN_ID_1 + LUN_1)
 #define LUN_ID_3        (LUN_ID_2 + LUN_2)
-#define LUN_ID_4        (LUN_ID_3 + LUN_3)
-#define LUN_ID_5        (LUN_ID_4 + LUN_4)
-#define LUN_ID_6        (LUN_ID_5 + LUN_5)
-#define LUN_ID_7        (LUN_ID_6 + LUN_6)
-#define MAX_LUN         (LUN_ID_7 + LUN_7)  //!< Number of static LUNs.
-#define LUN_ID_USB      (MAX_LUN)           //!< First dynamic LUN (USB host mass storage).
-//! @}
 
+#define MAX_LUN         (LUN_ID_2 + LUN_2)  //!< Number of static LUNs.
+//#define LUN_ID_USB      (MAX_LUN)           //!< First dynamic LUN (USB host mass storage).
+//! @}
+#define LUN_USB 0
 
 // Include LUN header files.
 #if LUN_0 == 1
@@ -147,24 +122,7 @@ typedef enum
 #if LUN_2 == 1
   #include LUN_2_INCLUDE
 #endif
-#if LUN_3 == 1
-  #include LUN_3_INCLUDE
-#endif
-#if LUN_4 == 1
-  #include LUN_4_INCLUDE
-#endif
-#if LUN_5 == 1
-  #include LUN_5_INCLUDE
-#endif
-#if LUN_6 == 1
-  #include LUN_6_INCLUDE
-#endif
-#if LUN_7 == 1
-  #include LUN_7_INCLUDE
-#endif
-#if LUN_USB == 1
-  #include LUN_USB_INCLUDE
-#endif
+
 
 
 // Check the configuration of write protection in conf_access.h.

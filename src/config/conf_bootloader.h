@@ -47,7 +47,7 @@
 #ifndef CONF_BOOTLOADER_H_INCLUDED
 #define CONF_BOOTLOADER_H_INCLUDED
 
-#include "conf_board.h"
+//#include "conf_board.h"
 
 #define APP_START_ADDRESS          0x00008000
 #define APP2_START_ADDRESS          0x0002A000

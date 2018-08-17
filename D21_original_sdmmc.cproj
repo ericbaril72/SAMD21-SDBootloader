@@ -723,13 +723,10 @@
     <Folder Include="src\ASF\common2\components\" />
     <Folder Include="src\ASF\common2\components\memory\" />
     <Folder Include="src\ASF\common2\components\memory\sd_mmc\" />
-    <Folder Include="src\ASF\common2\components\memory\sd_mmc\example2\" />
-    <Folder Include="src\ASF\common2\components\memory\sd_mmc\example2\samd21j18a_samd21_xplained_pro\" />
     <Folder Include="src\ASF\common2\services\" />
     <Folder Include="src\ASF\common2\services\delay\" />
     <Folder Include="src\ASF\common2\services\delay\sam0\" />
     <Folder Include="src\ASF\common\" />
-    <Folder Include="src\ASF\common\boards\" />
     <Folder Include="src\ASF\common\services\" />
     <Folder Include="src\ASF\common\services\serial\" />
     <Folder Include="src\ASF\common\services\serial\sam0_usart\" />
@@ -738,34 +735,21 @@
     <Folder Include="src\ASF\common\utils\" />
     <Folder Include="src\ASF\common\utils\interrupt\" />
     <Folder Include="src\ASF\sam0\" />
-    <Folder Include="src\ASF\sam0\boards\" />
-    <Folder Include="src\ASF\sam0\boards\samd21_xplained_pro\" />
     <Folder Include="src\ASF\sam0\drivers\" />
     <Folder Include="src\ASF\sam0\drivers\wdt" />
     <Folder Include="src\ASF\sam0\drivers\nvm" />
     <Folder Include="src\ASF\sam0\drivers\port\" />
-    <Folder Include="src\ASF\sam0\drivers\port\quick_start\" />
     <Folder Include="src\ASF\sam0\drivers\rtc\" />
     <Folder Include="src\ASF\sam0\drivers\rtc\rtc_sam_d_r\" />
     <Folder Include="src\ASF\sam0\drivers\sercom\" />
     <Folder Include="src\ASF\sam0\drivers\sercom\spi\" />
-    <Folder Include="src\ASF\sam0\drivers\sercom\spi\quick_start_dma\" />
-    <Folder Include="src\ASF\sam0\drivers\sercom\spi\quick_start_master\" />
-    <Folder Include="src\ASF\sam0\drivers\sercom\spi\quick_start_master_callback\" />
-    <Folder Include="src\ASF\sam0\drivers\sercom\spi\quick_start_slave\" />
-    <Folder Include="src\ASF\sam0\drivers\sercom\spi\quick_start_slave_callback\" />
     <Folder Include="src\ASF\sam0\drivers\sercom\usart\" />
-    <Folder Include="src\ASF\sam0\drivers\sercom\usart\quick_start\" />
-    <Folder Include="src\ASF\sam0\drivers\sercom\usart\quick_start_callback\" />
-    <Folder Include="src\ASF\sam0\drivers\sercom\usart\quick_start_dma\" />
-    <Folder Include="src\ASF\sam0\drivers\sercom\usart\quick_start_lin\" />
     <Folder Include="src\ASF\sam0\drivers\system\" />
     <Folder Include="src\ASF\sam0\drivers\system\clock\" />
     <Folder Include="src\ASF\sam0\drivers\system\clock\clock_samd21_r21_da\" />
     <Folder Include="src\ASF\sam0\drivers\system\interrupt\" />
     <Folder Include="src\ASF\sam0\drivers\system\interrupt\system_interrupt_samd21\" />
     <Folder Include="src\ASF\sam0\drivers\system\pinmux\" />
-    <Folder Include="src\ASF\sam0\drivers\system\pinmux\quick_start\" />
     <Folder Include="src\ASF\sam0\drivers\system\power\" />
     <Folder Include="src\ASF\sam0\drivers\system\power\power_sam_d_r\" />
     <Folder Include="src\ASF\sam0\drivers\system\reset\" />
@@ -809,6 +793,15 @@
     <Compile Include="src\asf.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\ASF\common2\services\delay\sam0\cycle_counter.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\common2\services\delay\sam0\cycle_counter.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\common\services\storage\ctrl_access\ctrl_access.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\ASF\sam0\drivers\nvm\nvm.c">
       <SubType>compile</SubType>
     </Compile>
@@ -827,6 +820,12 @@
     <Compile Include="src\ASF\sam0\drivers\wdt\wdt_callback.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\config\board.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\config\board_init.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\config\conf_bootloader.h">
       <SubType>compile</SubType>
     </Compile>
@@ -839,19 +838,10 @@
     <Compile Include="src\spi_master_bootloader.c">
       <SubType>compile</SubType>
     </Compile>
-    <None Include="src\config\conf_board.h">
-      <SubType>compile</SubType>
-    </None>
-    <None Include="src\ASF\common2\components\memory\sd_mmc\example2\samd21j18a_samd21_xplained_pro\conf_sleepmgr.h">
-      <SubType>compile</SubType>
-    </None>
     <None Include="src\config\conf_sd_mmc.h">
       <SubType>compile</SubType>
     </None>
     <None Include="src\config\conf_clocks.h">
-      <SubType>compile</SubType>
-    </None>
-    <None Include="src\ASF\common2\components\memory\sd_mmc\example2\samd21j18a_samd21_xplained_pro\conf_example.h">
       <SubType>compile</SubType>
     </None>
     <Compile Include="src\ASF\common2\components\memory\sd_mmc\sd_mmc.c">
@@ -947,9 +937,6 @@
     <None Include="src\ASF\common\services\serial\serial.h">
       <SubType>compile</SubType>
     </None>
-    <None Include="src\ASF\sam0\drivers\sercom\usart\quick_start_callback\qs_usart_callback.h">
-      <SubType>compile</SubType>
-    </None>
     <None Include="src\ASF\sam0\utils\cmsis\samd21\include\instance\adc.h">
       <SubType>compile</SubType>
     </None>
@@ -968,16 +955,10 @@
     <None Include="src\ASF\sam0\utils\status_codes.h">
       <SubType>compile</SubType>
     </None>
-    <None Include="src\ASF\sam0\drivers\sercom\spi\quick_start_master_callback\qs_spi_master_callback.h">
-      <SubType>compile</SubType>
-    </None>
     <None Include="src\ASF\sam0\utils\cmsis\samd21\include\samd21j16a.h">
       <SubType>compile</SubType>
     </None>
     <None Include="src\ASF\sam0\utils\cmsis\samd21\include\samd21j17a.h">
-      <SubType>compile</SubType>
-    </None>
-    <None Include="src\ASF\sam0\drivers\sercom\spi\quick_start_master\qs_spi_master_basic.h">
       <SubType>compile</SubType>
     </None>
     <None Include="src\ASF\sam0\utils\cmsis\samd21\include\samd21j15a.h">
@@ -1073,9 +1054,6 @@
     <None Include="src\ASF\sam0\drivers\system\interrupt\system_interrupt.h">
       <SubType>compile</SubType>
     </None>
-    <None Include="src\ASF\sam0\drivers\sercom\usart\quick_start\qs_usart_basic_use.h">
-      <SubType>compile</SubType>
-    </None>
     <None Include="src\ASF\sam0\utils\cmsis\samd21\include\instance\port.h">
       <SubType>compile</SubType>
     </None>
@@ -1155,9 +1133,6 @@
       <SubType>compile</SubType>
     </None>
     <None Include="src\ASF\common2\components\memory\sd_mmc\sd_mmc_mem.h">
-      <SubType>compile</SubType>
-    </None>
-    <None Include="src\ASF\sam0\drivers\sercom\spi\quick_start_slave\qs_spi_slave_basic.h">
       <SubType>compile</SubType>
     </None>
     <None Include="src\ASF\sam0\utils\header_files\io.h">
@@ -1385,9 +1360,6 @@
     <None Include="src\ASF\common\services\serial\sam0_usart\usart_serial.h">
       <SubType>compile</SubType>
     </None>
-    <None Include="src\ASF\sam0\drivers\system\pinmux\quick_start\qs_pinmux_basic.h">
-      <SubType>compile</SubType>
-    </None>
     <None Include="src\config\conf_access.h">
       <SubType>compile</SubType>
     </None>
@@ -1398,9 +1370,6 @@
       <SubType>compile</SubType>
     </None>
     <None Include="src\ASF\sam0\utils\cmsis\samd21\include\instance\dac.h">
-      <SubType>compile</SubType>
-    </None>
-    <None Include="src\ASF\common2\services\delay\sam0\cycle_counter.h">
       <SubType>compile</SubType>
     </None>
     <None Include="src\ASF\sam0\utils\cmsis\samd21\include\samd21g15b.h">
@@ -1434,9 +1403,6 @@
       <SubType>compile</SubType>
     </None>
     <None Include="src\ASF\sam0\drivers\system\power\power_sam_d_r\power.h">
-      <SubType>compile</SubType>
-    </None>
-    <None Include="src\ASF\sam0\boards\samd21_xplained_pro\samd21_xplained_pro.h">
       <SubType>compile</SubType>
     </None>
     <None Include="src\ASF\sam0\utils\cmsis\samd21\include\instance\mtb.h">
@@ -1490,9 +1456,6 @@
     <None Include="src\config\conf_fatfs.h">
       <SubType>compile</SubType>
     </None>
-    <None Include="src\ASF\sam0\drivers\sercom\spi\quick_start_slave_callback\qs_spi_slave_callback.h">
-      <SubType>compile</SubType>
-    </None>
     <None Include="src\ASF\sam0\utils\cmsis\samd21\include\component\wdt.h">
       <SubType>compile</SubType>
     </None>
@@ -1500,9 +1463,6 @@
       <SubType>compile</SubType>
     </None>
     <None Include="src\ASF\sam0\utils\cmsis\samd21\include\instance\evsys.h">
-      <SubType>compile</SubType>
-    </None>
-    <None Include="src\ASF\common\boards\board.h">
       <SubType>compile</SubType>
     </None>
     <None Include="src\ASF\sam0\utils\cmsis\samd21\include\pio\samd21g15b.h">
@@ -1556,9 +1516,6 @@
     <None Include="src\ASF\sam0\utils\cmsis\samd21\include\instance\sercom4.h">
       <SubType>compile</SubType>
     </None>
-    <None Include="src\ASF\sam0\drivers\port\quick_start\qs_port_basic.h">
-      <SubType>compile</SubType>
-    </None>
     <None Include="src\ASF\sam0\drivers\port\port.h">
       <SubType>compile</SubType>
     </None>
@@ -1566,9 +1523,6 @@
       <SubType>compile</SubType>
     </None>
     <None Include="src\ASF\sam0\utils\cmsis\samd21\include\instance\wdt.h">
-      <SubType>compile</SubType>
-    </None>
-    <None Include="src\ASF\sam0\drivers\sercom\usart\quick_start_dma\qs_usart_dma_use.h">
       <SubType>compile</SubType>
     </None>
     <None Include="src\ASF\sam0\utils\cmsis\samd21\include\component\eic.h">
@@ -1583,25 +1537,13 @@
     <Compile Include="src\ASF\common2\components\memory\sd_mmc\sd_mmc_spi.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\ASF\common2\services\delay\sam0\cycle_counter.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\ASF\common\services\storage\ctrl_access\ctrl_access.c">
-      <SubType>compile</SubType>
-    </Compile>
     <None Include="src\ASF\sam0\utils\cmsis\samd21\include\instance\ac.h">
-      <SubType>compile</SubType>
-    </None>
-    <None Include="src\ASF\sam0\drivers\sercom\usart\quick_start_lin\qs_lin.h">
       <SubType>compile</SubType>
     </None>
     <None Include="src\ASF\sam0\utils\cmsis\samd21\include\pio\samd21e15b.h">
       <SubType>compile</SubType>
     </None>
     <None Include="src\ASF\sam0\utils\cmsis\samd21\include\pio\samd21e16b.h">
-      <SubType>compile</SubType>
-    </None>
-    <None Include="src\ASF\sam0\drivers\sercom\spi\quick_start_dma\qs_spi_dma_use.h">
       <SubType>compile</SubType>
     </None>
     <None Include="src\ASF\sam0\utils\preprocessor\tpaste.h">
@@ -1611,9 +1553,6 @@
       <SubType>compile</SubType>
     </None>
     <Compile Include="src\ASF\common\utils\interrupt\interrupt_sam_nvic.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\ASF\sam0\boards\samd21_xplained_pro\board_init.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\ASF\sam0\drivers\port\port.c">

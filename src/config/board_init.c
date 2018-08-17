@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief Common Delay Service
+ * \brief SAM D21 Xplained Pro board initialization
  *
  * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
@@ -43,61 +43,41 @@
 /*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
-#ifndef DELAY_H_INCLUDED
-#define DELAY_H_INCLUDED
 
-#ifdef __cplusplus
-extern "C" {
+#include <compiler.h>
+#include <board.h>
+#include <conf_board.h>
+#include <port.h>
+
+#if defined(__GNUC__)
+void board_init(void) WEAK __attribute__((alias("system_board_init")));
+#elif defined(__ICCARM__)
+void board_init(void);
+#  pragma weak board_init=system_board_init
 #endif
 
-/**
- * @defgroup group_common_services_delay Busy-Wait Delay Routines
- *
- * This module provides simple loop-based delay routines for those
- * applications requiring a brief wait during execution. Common for
- * API ver. 2.
- *
- * @{
- */
+void system_board_init(void)
+{
+	struct port_config pin_conf;
+	port_get_config_defaults(&pin_conf);
 
+	/* Configure LEDs as outputs, turn them off */
+	pin_conf.direction  = PORT_PIN_DIR_OUTPUT;
+	port_pin_set_config(LED0_PIN, &pin_conf);
+	port_pin_set_output_level(LED0_PIN, false);
+	
+	port_pin_set_config(WINC1500CS, &pin_conf);
+	port_pin_set_output_level(WINC1500CS, WINC1500CS_INACTIVE);		// Sets WINC1500 CS to HIGH to avoid SPI conflicts during SD memory SPI access
+	port_pin_set_config(WINC1500RST, &pin_conf);
+	port_pin_set_output_level(WINC1500RST, WINC1500RST_ACTIVE);
+	
+	port_pin_set_config(WINC1500CS, &pin_conf);
+	port_pin_set_output_level(WINC1500CS, FT800CS_INACTIVE);		// Sets FT800 CS to HIGH to avoid SPI conflicts during SD memory SPI access
 
-#ifdef SYSTICK_MODE
-#include "sam0/systick_counter.h"
-#endif
-#ifdef CYCLE_MODE
-#include "sam0/cycle_counter.h"
-#endif
+	/* Set buttons as inputs */
+	pin_conf.direction  = PORT_PIN_DIR_INPUT;
+	pin_conf.input_pull = PORT_PIN_PULL_UP;
+	port_pin_set_config(PIN_PB02, &pin_conf);
+	
 
-
-void delay_init(void);
-
-/**
- * \def delay_s
- * \brief Delay in at least specified number of seconds.
- * \param delay Delay in seconds
- */
-#define delay_s(delay)          cpu_delay_s(delay)
-
-/**
- * \def delay_ms
- * \brief Delay in at least specified number of milliseconds.
- * \param delay Delay in milliseconds
- */
-#define delay_ms(delay)         cpu_delay_ms(delay)
-
-/**
- * \def delay_us
- * \brief Delay in at least specified number of microseconds.
- * \param delay Delay in microseconds
- */
-#define delay_us(delay)         cpu_delay_us(delay)
-
-#ifdef __cplusplus
 }
-#endif
-
-/**
- * @}
- */
-
-#endif /* DELAY_H_INCLUDED */

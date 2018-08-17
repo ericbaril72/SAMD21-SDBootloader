@@ -1,9 +1,12 @@
 /**
  * \file
  *
- * \brief SAM D21 Xplained Pro board initialization
+ * \brief Standard board header file.
  *
- * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
+ * This file includes the appropriate board header file according to the
+ * defined board (parameter BOARD).
+ *
+ * Copyright (c) 2009-2016 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -44,40 +47,47 @@
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
-#include <compiler.h>
-#include <board.h>
-#include <conf_board.h>
-#include <port.h>
+#ifndef _BOARD_H_
+#define _BOARD_H_
 
-#if defined(__GNUC__)
-void board_init(void) WEAK __attribute__((alias("system_board_init")));
-#elif defined(__ICCARM__)
-void board_init(void);
-#  pragma weak board_init=system_board_init
+/**
+ * \defgroup group_common_boards Generic board support
+ *
+ * The generic board support module includes board-specific definitions
+ * and function prototypes, such as the board initialization function.
+ *
+ * \{
+ */
+
+#include "compiler.h"
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
-void system_board_init(void)
-{
-	struct port_config pin_conf;
-	port_get_config_defaults(&pin_conf);
 
-	/* Configure LEDs as outputs, turn them off */
-	pin_conf.direction  = PORT_PIN_DIR_OUTPUT;
-	port_pin_set_config(LED_0_PIN, &pin_conf);
-	port_pin_set_output_level(LED_0_PIN, LED_0_INACTIVE);
-	
-	port_pin_set_config(WINC1500CS, &pin_conf);
-	port_pin_set_output_level(WINC1500CS, WINC1500CS_INACTIVE);		// Sets WINC1500 CS to HIGH to avoid SPI conflicts during SD memory SPI access
-	port_pin_set_config(WINC1500RST, &pin_conf);
-	port_pin_set_output_level(WINC1500RST, WINC1500RST_ACTIVE);
-	
-	port_pin_set_config(WINC1500CS, &pin_conf);
-	port_pin_set_output_level(WINC1500CS, FT800CS_INACTIVE);		// Sets FT800 CS to HIGH to avoid SPI conflicts during SD memory SPI access
 
-	/* Set buttons as inputs */
-	pin_conf.direction  = PORT_PIN_DIR_INPUT;
-	pin_conf.input_pull = PORT_PIN_PULL_UP;
-	port_pin_set_config(BUTTON_0_PIN, &pin_conf);
-	
+#define LED0_PIN                  PIN_PA17
 
+#define WINC1500CS				  PIN_PA06
+#define WINC1500CS_INACTIVE		  true
+#define WINC1500RST				  PIN_PA08
+#define WINC1500RST_ACTIVE		  false
+#define FT800CS				  PIN_PA06
+#define FT800CS_INACTIVE		  true
+
+
+
+
+extern void board_init(void);
+
+
+#ifdef __cplusplus
 }
+#endif
+
+/**
+ * \}
+ */
+
+#endif  // _BOARD_H_

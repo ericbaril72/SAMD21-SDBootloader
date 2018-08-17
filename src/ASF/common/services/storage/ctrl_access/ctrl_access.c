@@ -207,36 +207,7 @@ static const struct
 # endif
   Lun_desc_entry(2),
 #endif
-#if LUN_3 == ENABLE
-# ifndef Lun_3_unload
-#  define Lun_3_unload NULL
-# endif
-  Lun_desc_entry(3),
-#endif
-#if LUN_4 == ENABLE
-# ifndef Lun_4_unload
-#  define Lun_4_unload NULL
-# endif
-  Lun_desc_entry(4),
-#endif
-#if LUN_5 == ENABLE
-# ifndef Lun_5_unload
-#  define Lun_5_unload NULL
-# endif
-  Lun_desc_entry(5),
-#endif
-#if LUN_6 == ENABLE
-# ifndef Lun_6_unload
-#  define Lun_6_unload NULL
-# endif
-  Lun_desc_entry(6),
-#endif
-#if LUN_7 == ENABLE
-# ifndef Lun_7_unload
-#  define Lun_7_unload NULL
-# endif
-  Lun_desc_entry(7)
-#endif
+
 };
 
 #endif
@@ -290,7 +261,8 @@ static bool ctrl_access_lock(void)
 
 U8 get_nb_lun(void)
 {
-#if MEM_USB == ENABLE
+//#if MEM_USB == ENABLE
+#if 0
 #  ifndef Lun_usb_get_lun
 #    define Lun_usb_get_lun()  host_get_lun()
 #  endif
