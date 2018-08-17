@@ -1,9 +1,11 @@
 /**
  * \file
  *
- * \brief Bootloader specific configuration.
+ * \brief Arch file for SAM0.
  *
- * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
+ * This file defines common SAM0 series.
+ *
+ * Copyright (C) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -44,14 +46,60 @@
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
-#ifndef CONF_BOOTLOADER_H_INCLUDED
-#define CONF_BOOTLOADER_H_INCLUDED
+#ifndef _SAM_IO_
+#define _SAM_IO_
 
-#include "conf_board.h"
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
 
-#define APP_START_ADDRESS          0x00008000
-#define BOOT_LED                   LED0_PIN
-#define BOOT_LOAD_PIN              SW0_PIN
-#define GPIO_BOOT_PIN_MASK         (1U << (BOOT_LOAD_PIN & 0x1F))
+/* SAM D20 family */
+#if (SAMD20)
+#  include "samd20.h"
+#endif
 
-#endif /* CONF_BOARD_H_INCLUDED */
+#if (SAMD21)
+#  include "samd21.h"
+#endif
+
+#if (SAMR21)
+#  include "samr21.h"
+#endif
+
+#if (SAMD09)
+#  include "samd09.h"
+#endif
+
+#if (SAMD10)
+#  include "samd10.h"
+#endif
+
+#if (SAMD11)
+#  include "samd11.h"
+#endif
+
+#if (SAML21)
+#  include "saml21.h"
+#endif
+
+#if (SAML22)
+#  include "saml22.h"
+#endif
+
+#if (SAMDA1)
+#  include "samda1.h"
+#endif
+
+#if (SAMC20)
+#  include "samc20.h"
+#endif
+
+#if (SAMC21)
+#  include "samc21.h"
+#endif
+
+#if (SAMB11)
+#  include "samb11.h"
+#endif
+
+#endif /* _SAM_IO_ */
